@@ -78,6 +78,6 @@ InlineViewModes[]
 InlineViewModes[]=embed-inline
 
 [DebugSettings]
-DebugBuyUser=disabled 
+DebugBuyUser=enabled 
 DebugOutput=enabled
 */ ?>
