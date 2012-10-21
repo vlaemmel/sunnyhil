@@ -21,7 +21,12 @@ class ezcomCommentCommonManager extends ezcomCommentManager
      * @see extension/ezcomments/classes/ezcomCommentManager#beforeAddingComment($comment, $user, $notification)
      */
     public function beforeAddingComment( $comment, $user, $notification )
-    {                      
+    {                                            
+	
+		if (strpos($comment->attribute('text'), 'href=') !== false) {
+			return false; 
+		} 
+	
 		$ak_comment = array('author' => $comment->attribute('name'),
 							'email' => $comment->attribute('email'),
 							'website' => $comment->attribute('url'),
