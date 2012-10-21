@@ -1,0 +1,217 @@
+/*********************
+  menu core
+*********************/
+ul.menu {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	z-index: 10000;
+}
+
+ul.menu li {
+	list-style-type: none;
+}
+
+ul.submenu {
+	display: none;
+	padding: 0;
+	margin: 0;
+}
+
+ul.horizontal {
+	clear: left;
+	display: inline;
+	float: left;
+	position: relative;
+}
+
+ul.horizontal li {
+	float: left;
+	display: inline;
+	margin: 0;
+}
+
+ul.horizontal li ul.submenu {
+	position: absolute;
+	z-index: 100;
+}
+
+ul.vertical li {
+	display: list-item;
+	float: none;
+	margin: 0;
+}
+
+/*********************
+  canic styles
+*********************/
+
+#global-menubar li a {
+	display: block;
+	float: left;
+	overflow: hidden;
+}
+
+/*********************
+  navigation
+*********************/
+
+#global-menubar {
+	background: url(../images/nav.gif) repeat-x 0 0;
+	margin-top: 1px;
+	height: 50px;
+	width: 760px;
+}
+#global-menubar li {
+	display: inline;
+	float: left;
+	height: 50px;
+	position: relative;
+}
+#global-menubar li a {
+	background: url(../images/nav.gif) no-repeat 0 0;
+	height: 0;
+	padding-top: 50px;
+}
+
+/*submenu*/
+ul.submenu {
+	background-color: #2c3131;
+	left: 0;
+	padding: 10px 22px 0;
+	top: 50px;
+	width: 239px;
+}
+.submenu h2 {
+	color: #ffc832;
+	font-weight: normal;
+	font-size: 1.1em;
+	padding-bottom: 6px;
+	text-transform: uppercase;
+}
+
+div.submenu {
+	display: none;
+	position: absolute;
+	z-index: 100;
+	top: 50px;
+	left: 0;
+	padding: 10px 22px 0;
+	width: 239px;
+	background: #2c3131;
+}
+div.submenu h2 {
+	text-transform: uppercase;
+	color: #ffc832;
+	font-weight: normal;
+	font-size: 1.1em;
+	padding-bottom: 6px;
+}
+ul#global-menubar ul {
+	width: auto;
+	height: auto;
+	color: #fff;
+	font-size: 1.1em;
+	padding: 0 0 15px;
+	margin: 0;
+	width: 100%;
+	list-style-type: none;
+}
+ul#global-menubar ul li {
+	float: none;
+	display: block;
+	width: auto;
+	height: auto;
+	padding: 0 0 5px;
+	margin: 0;
+	color: #fff;
+}
+ul#global-menubar ul li a {
+	float: none;
+	clear: left;
+	display: inline;
+	padding: 0 0 0 8px;
+	height: auto;
+	overflow: auto;
+	background: none;
+	color: #fff;
+	text-decoration: none;
+	background: url(../images/bullet.gif) no-repeat 0px 0px;
+}
+ul#global-menubar li ul {
+}
+ul#global-menubar li:hover ul, ul#global-menubar li.sfhover ul {
+}
+ul#global-menubar ul li {
+}
+ul#global-menubar ul li a {
+}
+ul#global-menubar li ul.submenu li a, ul#global-menubar.menu-reset li ul.submenu li a {
+}
+ul#global-menubar li ul.submenu li a:hover, ul#global-menubar.menu-reset li ul.submenu li a:hover {
+}
+
+/*********************
+  custom menuitems
+*********************/
+ul#global-menubar li#node_id_62 {
+	width: 127px;
+	margin: 0 0 0 28px;
+}
+ul#global-menubar li#node_id_63 {
+	width: 283px;
+	margin: 0 0 0 46px;
+}
+ul#global-menubar li#node_id_64 {
+	width: 205px;
+	margin: 0 0 0 44px;
+}
+ul#global-menubar li#node_id_62 a {
+	width: 127px;
+	background-position: -28px 0;
+}
+ul#global-menubar li#node_id_63 a {
+	width: 283px;
+	background-position: -201px 0;
+}
+ul#global-menubar li#node_id_64 a {
+	width: 205px;
+	background-position: -528px 0;
+}
+ul#global-menubar li#node_id_62 a:hover, ul#global-menubar li#node_id_62.on a, ul#global-menubar li#node_id_62.selected a {
+	background-position: -28px -50px;
+}
+ul#global-menubar li#node_id_63 a:hover, ul#global-menubar li#node_id_63.on a, ul#global-menubar li#node_id_63.selected a {
+	background-position: -201px -50px;
+}
+ul#global-menubar li#node_id_64 a:hover, ul#global-menubar li#node_id_64.on a, ul#global-menubar li#node_id_64.selected a {
+	background-position: -528px -50px;
+}
+ul#global-menubar li#node_id_64 div.submenu {
+	position: absolute;
+	z-index: 10;
+	top: 50px;
+	left: -78px;
+}
+ul#global-menubar li#node_id_62 ul li a, ul#global-menubar li#node_id_63 ul li a, ul#global-menubar li#node_id_64 ul li a {
+	background-position: 0 4px!important;
+	width: auto;
+}
+ul#global-menubar li#node_id_62 ul li a:hover, ul#global-menubar li#node_id_63 ul li a:hover, ul#global-menubar li#node_id_64 ul li a:hover {
+	background-position: 0 4px;
+	text-decoration: underline;
+}
+/*
+.lc ul#global-menubar {
+	background:transparent url(../images/lc_nav.gif) no-repeat top left;
+}
+.lc ul#global-menubar li a {
+	background:transparent url(../images/lc_nav.gif) no-repeat top left;
+}
+*/
+ul#global-menubar li#node_id_63 ul li a {
+	background: url(../images/lc_bullet.gif) no-repeat 0px 0px;
+}
+ul#global-menubar #node_id_63 .submenu h2 {
+	color: #c8b3a2;
+}

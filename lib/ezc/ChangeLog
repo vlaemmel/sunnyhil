@@ -1,0 +1,115 @@
+SVN Revision: 10874
+
+Archive
+=======
+
+1.3.4 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #13501: Extracting tar files in case there is a long filename
+  combined with a long linkname.
+
+
+
+Authentication
+==============
+
+1.3.1 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #15240: Final LDAP bind uses wrong DN.
+- Fixed issue #15244: DN can not be retrieved from the LDAP filter.
+
+
+
+Configuration
+=============
+
+1.3.4 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Implemented issue #13244: ezcConfigurationIniWriter::writeSetting() enforces
+  quoting even thought it is documented differently.
+- Fixed bug #15309: Hash keys with quotes were not escaped properly internally.
+
+
+
+MvcTools
+========
+
+1.1.2 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed bug #15313: A regression in the ezcMvcRailsRoute matching considering
+  dots (".") in URLs.
+
+
+
+Search
+======
+
+1.0.6 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #15289: "AND" and "OR" in the query builder are even recognised
+  when there is no whitespace around them.
+- Fixed issue #15290: Test suite tries to acces local file.
+- Fixed issue #15294: Index is always re-created when the Zend Search Lucene
+  backend is initialized, wiping out all index data.
+- Fixed issue #15295: The Zend_Search_Lucene backend returns a different result
+  format then the Solr backend.
+- Fixed issue #15302: ezcSearchSession::update() leads to errors.
+- Implemented issue #15086: Added ezcSearchSession->createDeleteQuery() and
+  ezcSearchSession->delete().
+- Implemented issue #15087: Added ezcSearchSession->deleteByID() and
+  ezcSearchSession->findByID() for retrieving and deleting documents by their
+  ID.
+
+
+
+SystemInformation
+=================
+
+1.0.8 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Reorganized the source code to fall in line with guidelines.
+- Fixed the ezcSystemReaderCantScanOSException class to properly inherit
+  from ezcSystemInfoException and ezcBaseException.
+- Implemented issue #15352: Added support for XCache.
+- Removed support for PHP Accelerator, which is for PHP 4 only.
+
+
+
+Template
+========
+
+1.4.1 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #15291: {tr}-block ignores output context.
+
+
+
+Translation
+===========
+
+1.3.1 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #15260: ezcTranslationBorkFilter modifies all translations, not
+  only unfinished ones.
+
+
+
+Webdav
+======
+
+1.1.2 - Tuesday 01 September 2009
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- Fixed issue #15368: Corrected and enhanced documentation of ezcWebdavServer
+  regarding configuration handling.
+
+
+

@@ -1,0 +1,499 @@
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(5 rows, 0.696 ms) query number per page:547:
+SELECT DISTINCT
+                       ezcontentobject.*,
+                       ezcontentobject_tree.*,
+                       ezcontentclass.serialized_name_list as class_serialized_name_list,
+                       ezcontentclass.identifier as class_identifier,
+                       ezcontentclass.is_container as is_container
+                       
+                       , ezcontentobject_name.name as name,  ezcontentobject_name.real_translation 
+                       , a0.sort_key_int
+                       
+                   FROM
+                      ezcontentobject_tree,
+                      ezcontentobject,ezcontentclass
+                      , ezcontentobject_name 
+                      , ezcontentobject_attribute a0
+                      , ezcontentobject_attribute a1 
+                      
+                      
+                   WHERE
+                      ezcontentobject_tree.parent_node_id = 2 and
+                      
+                      
+                                   a0.contentobject_id = ezcontentobject.id AND
+                                   a0.contentclassattribute_id = 216 AND
+                                   a0.version = ezcontentobject_name.content_version AND
+ ( a0.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & a0.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & a0.language_id ) ) & 2 ) )
+   <
+     ( a0.language_id & 1 )
+   + ( ( a0.language_id & 2 ) )
+ ) 
+ AND 
+                      
+                                  a1.contentobject_id = ezcontentobject.id AND
+                                  a1.contentclassattribute_id = 216 AND
+                                  a1.version = ezcontentobject_name.content_version AND 
+ ( a1.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & a1.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & a1.language_id ) ) & 2 ) )
+   <
+     ( a1.language_id & 1 )
+   + ( ( a1.language_id & 2 ) )
+ ) 
+ AND 
+                            ( a1.sort_key_int BETWEEN 1298955601 AND 1301630399  ) AND 
+                      ezcontentclass.version=0 AND
+                      
+                      ezcontentobject_tree.contentobject_id = ezcontentobject.id  AND
+                      ezcontentclass.id = ezcontentobject.contentclass_id AND
+                      ezcontentobject_tree.node_id = ezcontentobject_tree.main_node_id AND
+                         ezcontentobject.contentclass_id  IN  ( 20 ) AND
+                       ezcontentobject_tree.contentobject_id = ezcontentobject_name.contentobject_id and
+                                   ezcontentobject_tree.contentobject_version = ezcontentobject_name.content_version and 
+ ( ezcontentobject_name.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 2 ) )
+   <
+     ( ezcontentobject_name.language_id & 1 )
+   + ( ( ezcontentobject_name.language_id & 2 ) )
+ ) 
+
+                      AND ezcontentobject_tree.is_invisible = 0
+                       AND ((ezcontentobject.section_id in (1))
+ OR (ezcontentobject.contentclass_id in (29, 30, 32, 33, 34, 42) AND ezcontentobject.section_id in (3))) 
+                      
+                       AND 
+ ezcontentobject.language_mask & 3 > 0 
+
+                 ORDER BY a0.sort_key_int ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(40 rows, 0.256 ms) query number per page:548:
+SELECT ezcontentobject_attribute.*, ezcontentclass_attribute.identifier as identifier FROM
+                    ezcontentobject_attribute, ezcontentclass_attribute
+                  WHERE
+                    ezcontentclass_attribute.version = '0' AND
+                    ezcontentclass_attribute.id = ezcontentobject_attribute.contentclassattribute_id AND
+                    ( ( ezcontentobject_attribute.version = '3' AND
+                    ezcontentobject_attribute.contentobject_id = '2989' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '1' AND
+                    ezcontentobject_attribute.contentobject_id = '3003' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '2' AND
+                    ezcontentobject_attribute.contentobject_id = '3018' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '2' AND
+                    ezcontentobject_attribute.contentobject_id = '3035' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '2' AND
+                    ezcontentobject_attribute.contentobject_id = '3069' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  )
+                  ORDER BY
+                    ezcontentobject_attribute.contentobject_id, ezcontentclass_attribute.placement ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.170 ms) query number per page:549:
+SELECT l.contentobject_state_id, s.identifier AS state_identifier, g.identifier AS state_group_identifier
+                FROM ezcobj_state_link l, ezcobj_state s, ezcobj_state_group g
+                WHERE l.contentobject_id=172 AND
+                      s.id=l.contentobject_state_id AND
+                      g.id=s.group_id
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] Timing Point: Module end 'content'
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.139 ms) query number per page:550:
+SELECT id, session_id, productcollection_id, order_id
+                    FROM   ezbasket
+WHERE  session_id='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.129 ms) query number per page:551:
+SELECT id, productcollection_id, contentobject_id, item_count, price, is_vat_inc, vat_value,
+       discount, name
+                    FROM   ezproductcollection_item
+WHERE  productcollection_id='0'
+ORDER BY contentobject_id DESC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.158 ms) query number per page:552:
+SELECT id, section_id, owner_id, contentclass_id, name, is_published, published,
+       modified, current_version, status, remote_id, language_mask, initial_language_id
+                    FROM   ezcontentobject
+WHERE  contentclass_id='15'
+ORDER BY id ASC
+LIMIT 0, 1
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(20 rows, 0.194 ms) query number per page:553:
+SELECT ezcontentobject_attribute.*, ezcontentclass_attribute.identifier as identifier FROM
+                    ezcontentobject_attribute, ezcontentclass_attribute, ezcontentobject_version
+                  WHERE
+                    ezcontentclass_attribute.version = '0' AND
+                    ezcontentclass_attribute.id = ezcontentobject_attribute.contentclassattribute_id AND
+                    ezcontentobject_version.contentobject_id = '54' AND
+                    ezcontentobject_version.version = '5' AND
+                    ezcontentobject_attribute.contentobject_id = '54' AND
+                    ezcontentobject_attribute.version = '5' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' 
+                  
+                  ORDER BY
+                    ezcontentclass_attribute.placement ASC,
+                    ezcontentobject_attribute.language_code ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.192 ms) query number per page:554:
+SELECT ezcontentobject.*,
+                       ezcontentobject_tree.*,
+                       ezcontentclass.serialized_name_list as class_serialized_name_list,
+                       ezcontentclass.identifier as class_identifier,
+                       ezcontentclass.is_container as is_container
+                       , ezcontentobject_name.name as name,  ezcontentobject_name.real_translation 
+                FROM ezcontentobject_tree,
+                     ezcontentobject,
+                     ezcontentclass
+                     , ezcontentobject_name 
+                WHERE node_id = 2 AND 
+                      ezcontentobject_tree.contentobject_id=ezcontentobject.id AND
+                      ezcontentclass.version=0  AND
+                      ezcontentclass.id = ezcontentobject.contentclass_id
+                       AND 
+ ezcontentobject.language_mask & 3 > 0 
+
+                       and  ezcontentobject_tree.contentobject_id = ezcontentobject_name.contentobject_id and
+                                  ezcontentobject_tree.contentobject_version = ezcontentobject_name.content_version and 
+ ( ezcontentobject_name.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 2 ) )
+   <
+     ( ezcontentobject_name.language_id & 1 )
+   + ( ( ezcontentobject_name.language_id & 2 ) )
+ )
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(6 rows, 0.202 ms) query number per page:555:
+SELECT DISTINCT
+                       ezcontentobject.*,
+                       ezcontentobject_tree.*,
+                       ezcontentclass.serialized_name_list as class_serialized_name_list,
+                       ezcontentclass.identifier as class_identifier,
+                       ezcontentclass.is_container as is_container
+                       
+                       , ezcontentobject_name.name as name,  ezcontentobject_name.real_translation 
+                       
+                       
+                   FROM
+                      ezcontentobject_tree,
+                      ezcontentobject,ezcontentclass
+                      , ezcontentobject_name 
+                      
+                      
+                      
+                      
+                   WHERE
+                      ezcontentobject_tree.parent_node_id = 2 and
+                      
+                      
+                      
+                      ezcontentclass.version=0 AND
+                      
+                      ezcontentobject_tree.contentobject_id = ezcontentobject.id  AND
+                      ezcontentclass.id = ezcontentobject.contentclass_id AND
+                      
+                         ezcontentobject.contentclass_id  IN  ( 1, 22, 35, 37, 24, 43, 41, 26, 31, 19, 23 ) AND
+                       ezcontentobject_tree.contentobject_id = ezcontentobject_name.contentobject_id and
+                                   ezcontentobject_tree.contentobject_version = ezcontentobject_name.content_version and 
+ ( ezcontentobject_name.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 2 ) )
+   <
+     ( ezcontentobject_name.language_id & 1 )
+   + ( ( ezcontentobject_name.language_id & 2 ) )
+ ) 
+
+                      AND ezcontentobject_tree.is_invisible = 0
+                       AND ((ezcontentobject.section_id in (1))
+ OR (ezcontentobject.contentclass_id in (29, 30, 32, 33, 34, 42) AND ezcontentobject.section_id in (3))) 
+                      
+                       AND 
+ ezcontentobject.language_mask & 3 > 0 
+
+                 ORDER BY ezcontentobject.published DESC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(42 rows, 0.238 ms) query number per page:556:
+SELECT ezcontentobject_attribute.*, ezcontentclass_attribute.identifier as identifier FROM
+                    ezcontentobject_attribute, ezcontentclass_attribute
+                  WHERE
+                    ezcontentclass_attribute.version = '0' AND
+                    ezcontentclass_attribute.id = ezcontentobject_attribute.contentclassattribute_id AND
+                    ( ( ezcontentobject_attribute.version = '2' AND
+                    ezcontentobject_attribute.contentobject_id = '933' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '1' AND
+                    ezcontentobject_attribute.contentobject_id = '868' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '1' AND
+                    ezcontentobject_attribute.contentobject_id = '485' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '1' AND
+                    ezcontentobject_attribute.contentobject_id = '440' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '5' AND
+                    ezcontentobject_attribute.contentobject_id = '325' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  OR ( ezcontentobject_attribute.version = '4' AND
+                    ezcontentobject_attribute.contentobject_id = '319' AND
+                    ezcontentobject_attribute.language_code = 'eng-US' )  )
+                  ORDER BY
+                    ezcontentobject_attribute.contentobject_id, ezcontentclass_attribute.placement ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.140 ms) query number per page:557:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:675' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.117 ms) query number per page:558:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:622' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.122 ms) query number per page:559:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:382' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.126 ms) query number per page:560:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:358' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.137 ms) query number per page:561:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:320' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.118 ms) query number per page:562:
+SELECT id, parent, lang_mask, text, action FROM ezurlalias_ml WHERE ( ezurlalias_ml.lang_mask & 3 > 0 ) AND action in ( 'eznode:2', 'eznode:315' ) AND is_original = 1 AND is_alias=0
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.165 ms) query number per page:563:
+SELECT id, serialized_name_list, version, contentclass_id, identifier, placement, is_searchable,
+       is_required, can_translate, is_information_collector, data_type_string, data_int1, data_int2, data_int3,
+       data_int4, data_float1, data_float2, data_float3, data_float4, data_text1, data_text2,
+       data_text3, data_text4, data_text5
+                    FROM   ezcontentclass_attribute
+WHERE  id='174' AND version='0'
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.194 ms) query number per page:564:
+SELECT ezcontentobject.*,
+                       ezcontentobject_tree.*,
+                       ezcontentclass.serialized_name_list as class_serialized_name_list,
+                       ezcontentclass.identifier as class_identifier,
+                       ezcontentclass.is_container as is_container
+                       , ezcontentobject_name.name as name,  ezcontentobject_name.real_translation 
+                FROM ezcontentobject_tree,
+                     ezcontentobject,
+                     ezcontentclass
+                     , ezcontentobject_name 
+                WHERE node_id = 2 AND 
+                      ezcontentobject_tree.contentobject_id=ezcontentobject.id AND
+                      ezcontentclass.version=0  AND
+                      ezcontentclass.id = ezcontentobject.contentclass_id
+                       AND 
+ ezcontentobject.language_mask & 3 > 0 
+
+                       and  ezcontentobject_tree.contentobject_id = ezcontentobject_name.contentobject_id and
+                                  ezcontentobject_tree.contentobject_version = ezcontentobject_name.content_version and 
+ ( ezcontentobject_name.language_id & ezcontentobject.language_mask > 0 AND
+     ( (   ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 1 )
+   + ( ( ( ezcontentobject.language_mask - ( ezcontentobject.language_mask & ezcontentobject_name.language_id ) ) & 2 ) )
+   <
+     ( ezcontentobject_name.language_id & 1 )
+   + ( ( ezcontentobject_name.language_id & 2 ) )
+ )
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.154 ms) query number per page:565:
+SELECT id, version, serialized_name_list, identifier, contentobject_name, url_alias_name, creator_id,
+       modifier_id, created, remote_id, modified, is_container, always_available, language_mask,
+       initial_language_id, sort_field, sort_order
+                    FROM   ezcontentclass
+WHERE  id='19' AND version='0'
+ORDER BY version ASC
+LIMIT 0, 2
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.120 ms) query number per page:566:
+SELECT contentobject_id, login, email, password_hash, password_hash_type
+                    FROM   ezuser
+WHERE  contentobject_id='3075'
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.699 ms) query number per page:567:
+SELECT d.*, c.path_string
+                                                FROM ezcontentobject_tree  b,
+                                                     ezcontentobject_tree  c,
+                                                     ezcontentobject d
+                                                WHERE b.contentobject_id='3075' AND
+                                                      b.parent_node_id = c.node_id AND
+                                                      d.id = c.contentobject_id
+                                                ORDER BY c.contentobject_id
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.470 ms) query number per page:568:
+SELECT d.*
+                                                FROM ezcontentobject_tree  c,
+                                                     ezcontentobject d
+                                                WHERE c.node_id in ( 5 ) AND
+                                                      d.id = c.contentobject_id
+                                                ORDER BY c.contentobject_id
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.133 ms) query number per page:569:
+SELECT DISTINCT ezrole.id,
+                                      ezrole.name,
+                                      ezuser_role.limit_identifier,
+                                      ezuser_role.limit_value,
+                                      ezuser_role.id as user_role_id
+                      FROM ezrole,
+                           ezuser_role
+                      WHERE ezuser_role.contentobject_id IN ( 3071, 4, 3075 ) AND
+                            ezuser_role.role_id = ezrole.id
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(12 rows, 0.125 ms) query number per page:570:
+SELECT id, role_id, module_name, function_name
+                    FROM   ezpolicy
+WHERE  role_id='1'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.122 ms) query number per page:571:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='413'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.120 ms) query number per page:572:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='328'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.107 ms) query number per page:573:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='414'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.108 ms) query number per page:574:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='329'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.098 ms) query number per page:575:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='415'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.096 ms) query number per page:576:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='416'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(3 rows, 0.117 ms) query number per page:577:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='336'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.126 ms) query number per page:578:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='417'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.122 ms) query number per page:579:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='331'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.105 ms) query number per page:580:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='418'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(6 rows, 0.109 ms) query number per page:581:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='332'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.123 ms) query number per page:582:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='333'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.104 ms) query number per page:583:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='419'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.121 ms) query number per page:584:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='334'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.116 ms) query number per page:585:
+SELECT id, limitation_id, value
+                    FROM   ezpolicy_limitation_value
+WHERE  limitation_id='335'
+ORDER BY value ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.122 ms) query number per page:586:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='420'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.105 ms) query number per page:587:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='421'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.109 ms) query number per page:588:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='422'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.097 ms) query number per page:589:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='423'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.102 ms) query number per page:590:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='424'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.115 ms) query number per page:591:
+SELECT id, role_id, module_name, function_name
+                    FROM   ezpolicy
+WHERE  role_id='6'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.118 ms) query number per page:592:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='425'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.108 ms) query number per page:593:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='413'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.111 ms) query number per page:594:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='418'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.103 ms) query number per page:595:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='414'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(2 rows, 0.099 ms) query number per page:596:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='419'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.099 ms) query number per page:597:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='416'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:24 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.117 ms) query number per page:598:
+SELECT id, policy_id, identifier
+                    FROM   ezpolicy_limitation
+WHERE  policy_id='417'
+ORDER BY id ASC
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.682 ms) query number per page:1:
+SELECT data, user_id, user_hash, expiration_time FROM ezsession WHERE session_key='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.604 ms) query number per page:1:
+SELECT data, user_id, user_hash, expiration_time FROM ezsession WHERE session_key='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.219 ms) query number per page:1:
+SELECT data, user_id, user_hash, expiration_time FROM ezsession WHERE session_key='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.228 ms) query number per page:1:
+SELECT data, user_id, user_hash, expiration_time FROM ezsession WHERE session_key='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(0 rows, 1.624 ms) query number per page:2:
+SELECT e0.id AS e0_id, e0.link AS e0_link, e0.text AS e0_text, e0.text_md5 AS e0_text_md5, e0.is_alias AS e0_is_alias, e0.alias_redirects AS e0_alias_redirects, e1.id AS e1_id, e1.link AS e1_link, e1.text AS e1_text, e1.text_md5 AS e1_text_md5, e1.is_alias AS e1_is_alias, e1.alias_redirects AS e1_alias_redirects, e2.id AS e2_id, e2.link AS e2_link, e2.text AS e2_text, e2.text_md5 AS e2_text_md5, e2.is_alias AS e2_is_alias, e2.action AS e2_action, e2.alias_redirects AS e2_alias_redirects
+FROM ezurlalias_ml e0, ezurlalias_ml e1, ezurlalias_ml e2
+WHERE e0.parent = 0 AND (e0.lang_mask & 3 > 0) AND e0.text_md5 =  MD5( 'ezjscore' ) 
+AND e1.parent = e0.link AND (e1.lang_mask & 3 > 0) AND e1.text_md5 =  MD5( 'call' ) 
+AND e2.parent = e1.link AND (e2.lang_mask & 3 > 0) AND e2.text_md5 =  MD5( 'ezcom::userdata' ) 
+LIMIT 0, 1
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(0 rows, 1.704 ms) query number per page:2:
+SELECT e0.id AS e0_id, e0.link AS e0_link, e0.text AS e0_text, e0.text_md5 AS e0_text_md5, e0.is_alias AS e0_is_alias, e0.alias_redirects AS e0_alias_redirects, e1.id AS e1_id, e1.link AS e1_link, e1.text AS e1_text, e1.text_md5 AS e1_text_md5, e1.is_alias AS e1_is_alias, e1.alias_redirects AS e1_alias_redirects, e2.id AS e2_id, e2.link AS e2_link, e2.text AS e2_text, e2.text_md5 AS e2_text_md5, e2.is_alias AS e2_is_alias, e2.action AS e2_action, e2.alias_redirects AS e2_alias_redirects
+FROM ezurlalias_ml e0, ezurlalias_ml e1, ezurlalias_ml e2
+WHERE e0.parent = 0 AND (e0.lang_mask & 3 > 0) AND e0.text_md5 =  MD5( 'ezjscore' ) 
+AND e1.parent = e0.link AND (e1.lang_mask & 3 > 0) AND e1.text_md5 =  MD5( 'call' ) 
+AND e2.parent = e1.link AND (e2.lang_mask & 3 > 0) AND e2.text_md5 =  MD5( 'ezcom::userdata' ) 
+LIMIT 0, 1
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(1 rows, 0.233 ms) query number per page:1:
+SELECT data, user_id, user_hash, expiration_time FROM ezsession WHERE session_key='3atf42v4spumqiab1r7qrh14g1'
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.206 ms) query number per page:2:
+SELECT e0.id AS e0_id, e0.link AS e0_link, e0.text AS e0_text, e0.text_md5 AS e0_text_md5, e0.is_alias AS e0_is_alias, e0.alias_redirects AS e0_alias_redirects, e1.id AS e1_id, e1.link AS e1_link, e1.text AS e1_text, e1.text_md5 AS e1_text_md5, e1.is_alias AS e1_is_alias, e1.alias_redirects AS e1_alias_redirects, e2.id AS e2_id, e2.link AS e2_link, e2.text AS e2_text, e2.text_md5 AS e2_text_md5, e2.is_alias AS e2_is_alias, e2.action AS e2_action, e2.alias_redirects AS e2_alias_redirects
+FROM ezurlalias_ml e0, ezurlalias_ml e1, ezurlalias_ml e2
+WHERE e0.parent = 0 AND (e0.lang_mask & 3 > 0) AND e0.text_md5 =  MD5( 'ezjscore' ) 
+AND e1.parent = e0.link AND (e1.lang_mask & 3 > 0) AND e1.text_md5 =  MD5( 'call' ) 
+AND e2.parent = e1.link AND (e2.lang_mask & 3 > 0) AND e2.text_md5 =  MD5( 'ezcom::userdata' ) 
+LIMIT 0, 1
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.728 ms) query number per page:2:
+SELECT e0.id AS e0_id, e0.link AS e0_link, e0.text AS e0_text, e0.text_md5 AS e0_text_md5, e0.is_alias AS e0_is_alias, e0.alias_redirects AS e0_alias_redirects, e1.id AS e1_id, e1.link AS e1_link, e1.text AS e1_text, e1.text_md5 AS e1_text_md5, e1.is_alias AS e1_is_alias, e1.alias_redirects AS e1_alias_redirects, e2.id AS e2_id, e2.link AS e2_link, e2.text AS e2_text, e2.text_md5 AS e2_text_md5, e2.is_alias AS e2_is_alias, e2.action AS e2_action, e2.alias_redirects AS e2_alias_redirects
+FROM ezurlalias_ml e0, ezurlalias_ml e1, ezurlalias_ml e2
+WHERE e0.parent = 0 AND (e0.lang_mask & 3 > 0) AND e0.text_md5 =  MD5( 'ezjscore' ) 
+AND e1.parent = e0.link AND (e1.lang_mask & 3 > 0) AND e1.text_md5 =  MD5( 'call' ) 
+AND e2.parent = e1.link AND (e2.lang_mask & 3 > 0) AND e2.text_md5 =  MD5( 'ezcom::userdata' ) 
+LIMIT 0, 1
+[ Mar 12 2011 00:16:28 ] [98.230.27.191] eZMySQLDB::query(0 rows, 0.236 ms) query number per page:2:
+SELECT e0.id AS e0_id, e0.link AS e0_link, e0.text AS e0_text, e0.text_md5 AS e0_text_md5, e0.is_alias AS e0_is_alias, e0.alias_redirects AS e0_alias_redirects, e1.id AS e1_id, e1.link AS e1_link, e1.text AS e1_text, e1.text_md5 AS e1_text_md5, e1.is_alias AS e1_is_alias, e1.alias_redirects AS e1_alias_redirects, e2.id AS e2_id, e2.link AS e2_link, e2.text AS e2_text, e2.text_md5 AS e2_text_md5, e2.is_alias AS e2_is_alias, e2.action AS e2_action, e2.alias_redirects AS e2_alias_redirects
+FROM ezurlalias_ml e0, ezurlalias_ml e1, ezurlalias_ml e2
+WHERE e0.parent = 0 AND (e0.lang_mask & 3 > 0) AND e0.text_md5 =  MD5( 'ezjscore' ) 
+AND e1.parent = e0.link AND (e1.lang_mask & 3 > 0) AND e1.text_md5 =  MD5( 'call' ) 
+AND e2.parent = e1.link AND (e2.lang_mask & 3 > 0) AND e2.text_md5 =  MD5( 'ezcom::userdata' ) 
+LIMIT 0, 1

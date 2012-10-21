@@ -1,0 +1,20 @@
+Unpack the files from the archive in to eZ publish extension directory. Next go to the administration interface of your eZ publish installation and navigate to "Setup / Extensions". The "ezservervars" extension should be available in the list. Register this extension by activating the checkbox, then click "Apply changes".
+
+To avoid view cache issue you will need to disable cache for your template and use {cache-block}.
+
+Example:
+
+{set-block scope=root variable=cache_ttl}0{/set-block}
+
+{cache-block}
+    //tpl code
+{/cache-block}
+
+{def $server_vars=ezservervars()}
+
+{* Display IP address *}
+{$server_vars['REMOTE_ADDR']}
+
+{cache-block}
+    //tpl code
+{/cache-block}

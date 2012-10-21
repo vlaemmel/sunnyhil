@@ -1,0 +1,343 @@
+body {
+	background: #fff;
+	font-family:Verdana,Tahoma,Arial;
+	color:#263B01;
+}
+
+.class-frontpage h1, .class-frontpage h2, .class-frontpage h3, .class-frontpage h4, .class-frontpage h5, .class-frontpage h6 {
+	color: #000;
+}
+
+.extrainfo-column div.calendar {
+	margin-left: -9px;
+}
+
+div#header-position {
+	background: none;
+}
+
+div#page-content-position {
+	background: none;	
+}
+
+div#page-content {
+	background: none;
+}
+
+div#header, div#columns-position, div#topmenu ul, div#path, div#footer {
+	width: 1100px;
+}
+
+div#logo {
+	margin: 22px 10px;
+}
+
+#usermenu {
+	position: absolute;
+	top: -27px;
+	right: 0px;
+}
+
+#header {
+	position: relative;
+}
+
+div#links a {
+	color: #ffffff;
+}
+
+div#searchbox {
+	width: auto;
+	margin-right: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+}
+
+div.border-box-style2 div.border-tr {
+	background-image:url(../images/border-box-style2/border-tr.png);
+}
+
+#footer div.border-box div.border-mc {
+
+}
+
+div#header {
+	padding-top: 0px;
+}
+
+div#footer div.border-content {
+	color: #000;
+}
+
+#rune_pic {
+	border: 2px solid #fff;
+	float: left;
+	margin: -10px 10px 0 0;
+}
+
+.class-frontpage div.columns-blog {
+	padding: 0px;
+}
+
+.class-frontpage .columns-blog div.extrainfo-column-position {
+	display: none;
+}
+
+.tag_embeded div.attribute-header h1, .tag_embeded div.attribute-header h1.long {
+	padding-bottom: 0.25em;
+}
+
+.sharebutton {
+	float: right;
+}
+
+div.class-blog {
+	position: relative;
+}
+
+div#links ul li#rss {
+	position: absolute;
+	background-image: none;
+}
+
+.inline {
+	float: left;
+	padding: 0 1em 1em 0;
+	clear: both;
+}
+
+.withtopmargin {
+	margin-top: 2em;
+}
+
+a {
+	color: #612789;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+div.content-view-line div.class-blog-post div.attribute-header a {
+		color: #612789;
+}
+
+div.content-view-full div.attribute-byline p.date {
+	color: #BABABA;
+}
+
+div#logo {
+	left:293px;
+	margin:0;
+	padding:0;
+	position:absolute;
+	top:24px;
+}
+
+.content-view-line .class-blog-post h3 {
+	font-weight: normal;
+}
+
+.columns-blog h1 {
+	font-size: 2.4em;
+}
+
+.columns-blog .content-view-line {
+	margin-bottom: 2em;
+}
+
+#tagline {
+	left:295px;
+	position:absolute;
+	top:109px;
+}
+
+.col_ad {
+	margin: 12px 0;
+}
+
+.skybox {
+	margin: 0px auto;
+	width: 125px;
+}
+
+div#extrainfo {
+	padding-left: 20px;
+}
+
+span.greyme {
+	color: #263B01;
+}
+
+.class-blog .attribute-description {
+	font-style: italic;
+	font-size: 90%;
+}
+
+#tagline {
+	letter-spacing: 1.1px;
+}
+
+.extrainfo-column ul {
+	margin-left: 0px;
+}
+
+div.object-left, table.object-left {
+	margin:0.25em 1em 0.5em 0;
+}
+
+.button, .defaultbutton {
+	cursor: pointer;
+}
+
+.content-view-line {
+	margin-bottom: 1em;
+}
+
+.twtr-widget .twtr-hd h4 {
+font-size:13px !important;
+}
+
+.attribute-comments {
+	margin-bottom: 17px;
+}
+
+.sm_bs {
+	margin: 10px auto;
+	width: 144px;
+}
+
+.sm_bs img {
+	margin-bottom: 7px;
+}
+
+#topmenu-secondlevel {
+	display: none;
+}
+
+.com_wrapper {
+	display: none;
+}
+
+#newrss img {
+	height: 1em;
+}
+
+label.error {
+	float: left;
+	color: red;
+}
+
+#widgetbox_widget_parent_0 {
+	margin-left: -13px;
+}
+
+div#topmenu div#topmenu-firstlevel-position {
+	background: none;
+}
+
+#topmenu {
+	width: 1100px;
+	margin: 0px auto;
+}
+
+.module{
+	background-color:#fefcf1;
+	border-radius:6px;
+	-moz-border-radius:6px;
+	box-shadow: 3px 3px 6px #666666;
+	-moz-box-shadow: 3px 3px 6px #666666;
+	-webkit-border-radius:6px;
+	-webkit-box-shadow: 3px 3px 6px #666666;
+	behavior: url(/extension/site/design/dev/stylesheets/pie.htc);
+	padding: 10px;
+	margin-bottom: 10px;
+}
+
+
+div#topmenu ul#topmenu-firstlevel li {
+	background-position:0 65%;
+}
+
+div.main-column-position {
+	margin-right: 0em;
+}
+
+div.columns-blog {
+	padding-right: 360px;
+	position: relative;
+	width: 740px;
+}
+
+div.extrainfo-column-position {
+	margin-right:-354px;
+	padding-left:24px;
+	width:330px;
+}
+
+div#columns {
+	font-size: 115%;
+}
+
+#feedWidget {
+	width: 260px;
+}
+
+.node_id_2 div#path {
+	display: none;
+}
+
+#new_logo {
+	margin-top: -13px;
+}
+
+div#topmenu ul#topmenu-firstlevel li a {
+	color: #612789;
+}
+
+.extrainfo-column h1 {
+	color: #612789;	
+}
+
+#header {
+	height:265px;
+	overflow: hidden;
+}
+
+#page div.ezcom-view-list, #page div.ezcom-add, div.ezcom-edit {
+	 background: transparent;
+}
+
+.ezcom-function-title {
+	margin-bottom:30px;
+	margin-left:0;
+	margin-right:0;
+	margin-top:40px;
+}
+
+div.class-comment {
+	border-bottom: 1px dashed;
+	margin-bottom: 40px;
+}
+
+.infobox .border-bc {
+	background: #CCC;
+}
+
+.infobox h2 {
+	color: #612789;
+	text-align:center;
+}
+
+#newfollower {
+	width: 175px;
+}
+
+.adbox {
+	margin-left: -25px;
+	margin-bottom: 20px;
+}
+
+.fb_ltr {
+	margin-left:-10px;
+}

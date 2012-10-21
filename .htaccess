@@ -1,0 +1,116 @@
+# Copy this file to a new file called .htaccess in your eZ publish root
+# to make the site more secure in non-virtualhost mode (index.php used in urls).
+#
+
+<FilesMatch "\.">
+order allow,deny
+deny from all
+</FilesMatch>
+
+<FilesMatch "(maintenance\.htm|index\.php|phpinfo\.php|list\.php|\.(-Repeat|php|wmv|zip|config|jar|htc|asx|gif|jpe?g?|png|css|js|htm(l)?|ico|swf|xml|txt)|var(.+)storage(.+)\.pdf)$">
+order allow,deny
+allow from all
+</FilesMatch>
+
+<FilesMatch "index\.php|index_treemenu\.php">
+   Options +Includes
+   SetOutputFilter INCLUDES
+   AcceptPathInfo On
+   order allow,deny
+   allow from all
+</FilesMatch>
+
+#BEGIN GZIP
+<ifmodule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/text text/html text/plain text/xml text/css application/x-javascript application/javascript
+</ifmodule>
+# END GZIP
+
+<ifmodule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 seconds"
+  ExpiresByType text/html "access plus 7200 seconds"
+  ExpiresByType image/gif "access plus 518400 seconds"
+  ExpiresByType image/jpeg "access plus 518400 seconds"
+  ExpiresByType image/png "access plus 518400 seconds"
+  ExpiresByType text/css "access plus 518400 seconds"
+  ExpiresByType text/javascript "access plus 216000 seconds"
+  ExpiresByType application/x-javascript "access plus 216000 seconds"
+</ifmodule>
+<ifmodule mod_headers.c>
+  # Cache specified files for 6 days
+  <filesmatch "\.(ico|flv|jpg|jpeg|png|gif|css|swf)$">
+  Header set Cache-Control "max-age=518400, public"
+  </filesmatch>
+  # Cache HTML files for a couple hours
+  <filesmatch "\.(html|htm)$">
+  Header set Cache-Control "max-age=7200, private, must-revalidate"
+  </filesmatch>
+  # Cache PDFs for a day
+  <filesmatch "\.(pdf)$">
+  Header set Cache-Control "max-age=86400, public"
+  </filesmatch>
+  # Cache Javascripts for 2.5 days
+  <filesmatch "\.(js)$">
+  Header set Cache-Control "max-age=216000, private"
+  </filesmatch>
+</ifmodule>
+
+
+<FilesMatch ".htc$">
+	Header set Content-type "text/x-component"
+</FilesMatch>
+
+
+RewriteEngine On
+
+RewriteRule ^site/ http://www.google.com [L,R=301]
+
+RewriteCond %{HTTP_REFERER} !amandabroadfoot.com
+RewriteCond %{HTTP_REFERER} !lifeisaspectrum.com
+RewriteCond %{REQUEST_METHOD} POST
+RewriteRule .* / [L]
+
+RewriteCond %{HTTP_HOST} amandabroadfoot.com
+RewriteRule ^(.*)?$ http://www.lifeisaspectrum.com/$1 [R=permanent,L]
+
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} amandabroadfoot.com
+RewriteRule ^(.*)?$ http://www.amandabroadfoot.com/$1 [R=permanent,L]
+
+RewriteCond %{HTTP_HOST} !^www
+RewriteCond %{HTTP_HOST} lifeisaspectrum.com
+RewriteRule ^(.*)?$ http://www.lifeisaspectrum.com/$1 [R=permanent,L]
+
+#RewriteRule machform/([^/]+\.php)$ http://www.layia.net/extension/machform/standalone/$1 [L]
+
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteRule ^dev/(.*)$ /$2 [L,R=301]
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteRule ^dev$ / [L,R=301]
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteRule ^index.php/(dev/)?(.*)? /$2 [L,R=301]
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteRule ^index.php(/dev)$ / [L,R=301]
+
+#RewriteRule machform/([^/]+\.php)$ http://www.layia.net/extension/machform/standalone/$1 [L]
+#RewriteRule extension/machform - [L]
+
+RewriteRule ^/var/[^/]+/cache/public/.* - [L]
+RewriteRule ^var/[^/]+/cache/(stylesheets|images|javascripts?)/.* - [L]
+RewriteRule content/treemenu/? index_treemenu.php
+RewriteRule content/download index.php [L]
+RewriteRule index_treemenu.php - [L]
+RewriteRule robots.txt - [L]
+RewriteRule design/.* - [L]
+RewriteRule eletter/.* - [L]
+RewriteRule \.php$ - [L]
+RewriteRule ^robots.txt - [L]
+
+RewriteRule !\.(ico|swf|xml|gif|jpe?g?|png|jar|css|htc|js|html?)|var(.+)storage.pdf(.+)\.pdf$ index.php
+
+DirectoryIndex index.php
